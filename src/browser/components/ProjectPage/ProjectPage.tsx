@@ -11,7 +11,10 @@ import { ArchivedWorkspaces } from "../ArchivedWorkspaces/ArchivedWorkspaces";
 import { useAPI } from "@/browser/contexts/API";
 import { isWorkspaceArchived } from "@/common/utils/archive";
 import { GitInitBanner } from "../GitInitBanner/GitInitBanner";
-import { ConfiguredProvidersBar } from "../ConfiguredProvidersBar/ConfiguredProvidersBar";
+import {
+  ConfiguredProvidersBar,
+  ConfiguredProvidersBarSkeleton,
+} from "../ConfiguredProvidersBar/ConfiguredProvidersBar";
 import { ConfigureProvidersPrompt } from "../ConfigureProvidersPrompt/ConfigureProvidersPrompt";
 import { useProvidersConfig } from "@/browser/hooks/useProvidersConfig";
 import type { ProvidersConfigMap } from "@/common/orpc/types";
@@ -31,7 +34,6 @@ import {
   getProjectScopeId,
 } from "@/common/constants/storage";
 import { Button } from "@/browser/components/Button/Button";
-import { Skeleton } from "@/browser/components/Skeleton/Skeleton";
 import { isDesktopMode } from "@/browser/hooks/useDesktopTitlebar";
 
 interface ProjectPageProps {
@@ -309,10 +311,7 @@ export const ProjectPage: React.FC<ProjectPageProps> = ({
                     )}
                     {/* Configured providers bar - compact icon carousel */}
                     {providersLoading ? (
-                      // Skeleton placeholder matching ConfiguredProvidersBar height
-                      <div className="flex items-center justify-center gap-2 py-1.5">
-                        <Skeleton className="h-7 w-32" />
-                      </div>
+                      <ConfiguredProvidersBarSkeleton />
                     ) : (
                       hasProviders &&
                       providersConfig && (

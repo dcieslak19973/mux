@@ -2969,6 +2969,7 @@ const ChatInputInner: React.FC<ChatInputProps> = (props) => {
               pb-[max(8px,min(env(safe-area-inset-bottom,0px),40px))] 
               mb-[calc(-1*min(env(safe-area-inset-bottom,0px),40px))]`
         )}
+        data-chat-input-variant={variant}
         data-component="ChatInputSection"
         data-autofocus-state="done"
       >
